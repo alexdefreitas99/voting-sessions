@@ -4,7 +4,13 @@ import com.alexdefreitas.agenda.model.AgendaModel;
 import com.alexdefreitas.contract.v1.agenda.model.request.AgendaRequest;
 import com.alexdefreitas.contract.v1.agenda.model.response.AgendaResponse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AgendaMapper {
+
+    private AgendaMapper() { }
+
     public static AgendaModel mapFrom(AgendaRequest agendaRequest) {
         return AgendaModel
                 .builder()
@@ -15,7 +21,20 @@ public class AgendaMapper {
     public static AgendaResponse mapFrom(AgendaModel agendaModel) {
         return AgendaResponse
                 .builder()
-                .status("Ok")
+                .subject(agendaModel.getSubject())
                 .build();
+    }
+
+    public static List<AgendaResponse> mapFrom(List<AgendaModel> agendaModels) {
+        List<AgendaResponse> agendaResponses = new ArrayList<>();
+        agendaModels
+                .parallelStream()
+                .forEach(agendaModel -> agendaResponses.add(
+                        AgendaResponse
+                                .builder()
+                                .subject(agendaModel.getSubject())
+                                .build()
+                ));
+        return agendaResponses;
     }
 }
