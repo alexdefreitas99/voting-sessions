@@ -1,0 +1,21 @@
+# Use root/example as user/password credentials
+version: '3.1'
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: votingsessions
+      MYSQL_ROOT_PASSWORD: admin
+      # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+volumes:
+  mariadb:
