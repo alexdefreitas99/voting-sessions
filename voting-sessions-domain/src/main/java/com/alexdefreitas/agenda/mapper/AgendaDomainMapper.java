@@ -6,7 +6,7 @@ import com.alexdefreitas.agenda.model.entity.AgendaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgendaModelMapper {
+public class AgendaDomainMapper {
     public static AgendaEntity mapFrom(AgendaModel agendaModel) {
         return AgendaEntity.builder().subject(agendaModel.getSubject()).build();
     }

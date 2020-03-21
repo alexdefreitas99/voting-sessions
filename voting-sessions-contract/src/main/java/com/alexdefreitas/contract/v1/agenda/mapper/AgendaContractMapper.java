@@ -7,9 +7,9 @@ import com.alexdefreitas.contract.v1.agenda.model.response.AgendaResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AgendaMapper {
+public class AgendaContractMapper {
 
-    private AgendaMapper() { }
+    private AgendaContractMapper() { }
 
     public static AgendaModel mapFrom(AgendaRequest agendaRequest) {
         return AgendaModel

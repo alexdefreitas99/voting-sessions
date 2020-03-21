@@ -5,13 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class AgendaRequest {
-    @NotNull(message = "The subject of the agenda cannot be null")
+    @NotEmpty
     private String subject;
 }
