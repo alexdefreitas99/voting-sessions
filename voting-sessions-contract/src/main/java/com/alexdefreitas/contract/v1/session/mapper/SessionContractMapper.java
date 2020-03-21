@@ -15,6 +15,7 @@ public class SessionContractMapper {
     public static SessionResponse mapFrom(SessionModel sessionModel) {
         return SessionResponse.builder()
                 .sessionId(sessionModel.getSessionId())
+                .openingDate(sessionModel.getOpeningDate().toString())
                 .agendaId(sessionModel.getAgendaId())
                 .build();
     }

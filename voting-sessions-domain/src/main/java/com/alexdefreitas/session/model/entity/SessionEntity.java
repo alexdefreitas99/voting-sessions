@@ -29,6 +29,4 @@ public class SessionEntity {
     @Column(name = "OPENING_DATE")
     @CreationTimestamp
     private LocalDateTime openingDate;
-
-
 }

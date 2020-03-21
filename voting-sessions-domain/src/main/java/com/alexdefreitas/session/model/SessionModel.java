@@ -13,10 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class SessionModel {
-//    private AgendaModel agenda;
     private Long sessionId;
     private Long agendaId;
     private Integer minuteDuration;
-    private LocalDateTime dataHoraAbertura;
-    private LocalDateTime dataHoraEncerramento;
+    private LocalDateTime openingDate;
 }
