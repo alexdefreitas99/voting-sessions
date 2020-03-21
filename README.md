@@ -4,6 +4,9 @@ This is a Java project to manage member voting sessions.
 
 Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java OpenJDK 11.
 
+# Documentation
+## Swagger
+http://localhost:8081/voting-sessions/swagger-ui.html
 
 # Quality
 ## SonarQube
