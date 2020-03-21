@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -23,4 +25,10 @@ public class SessionEntity {
     @ManyToOne
     @JoinColumn(name = "ID_AGENDA")
     private AgendaEntity agenda;
+
+    @Column(name = "OPENING_DATE")
+    @CreationTimestamp
+    private LocalDateTime openingDate;
+
+
 }
