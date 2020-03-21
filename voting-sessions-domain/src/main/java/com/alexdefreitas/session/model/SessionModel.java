@@ -1,6 +1,5 @@
 package com.alexdefreitas.session.model;
 
-import com.alexdefreitas.agenda.model.AgendaModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +16,5 @@ public class SessionModel {
     private Long agendaId;
     private Integer minuteDuration;
     private LocalDateTime openingDate;
+    private LocalDateTime closingDate;
 }

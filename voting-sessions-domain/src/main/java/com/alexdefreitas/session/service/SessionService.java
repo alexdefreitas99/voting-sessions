@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
+
 import static com.alexdefreitas.session.mapper.SessionDomainMapper.mapFrom;
 
 @Service
@@ -22,8 +24,15 @@ public class SessionService {
 
     public SessionModel createVotingSession(SessionModel sessionModel) {
         var agendaEntity = AgendaDomainMapper.mapFrom(agendaService.findAgenda(sessionModel.getAgendaId()));
-        var sessionEntity = SessionEntity.builder().agenda(agendaEntity).build();
+        var sessionEntity = SessionEntity.builder()
+                .agenda(agendaEntity)
+                .closingDate(getSessionClosingDate(sessionModel.getMinuteDuration()))
+                .build();
         return mapFrom(sessionRepository.save(sessionEntity));
+    }
+
+    private static LocalDateTime getSessionClosingDate(Integer minuteDuration) {
+        return LocalDateTime.now().plusMinutes(minuteDuration);
     }
 
     public SessionModel findSession(Long id) {

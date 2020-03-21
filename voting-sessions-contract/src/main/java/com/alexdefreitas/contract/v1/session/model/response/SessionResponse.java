@@ -13,4 +13,5 @@ public class SessionResponse {
     private Long sessionId;
     private Long agendaId;
     private String openingDate;
+    private String closingDate;
 }

@@ -13,8 +13,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Builder
 public class SessionRequest {
-    @Value("1")
-    private Integer minuteDuration;
+    private Integer minuteDuration = 1;
 
     @NotNull
     private Long agenda;

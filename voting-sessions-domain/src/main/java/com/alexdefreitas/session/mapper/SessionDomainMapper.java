@@ -11,6 +11,7 @@ public class SessionDomainMapper {
                 .sessionId(sessionEntity.getId())
                 .openingDate(sessionEntity.getOpeningDate())
                 .agendaId(sessionEntity.getAgenda().getId())
+                .closingDate(sessionEntity.getClosingDate())
                 .build();
     }
 }
