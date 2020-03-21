@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Table(name = "session")
 public class SessionEntity {
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

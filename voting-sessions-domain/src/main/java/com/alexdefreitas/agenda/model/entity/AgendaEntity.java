@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Table(name = "agenda")
 public class AgendaEntity {
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

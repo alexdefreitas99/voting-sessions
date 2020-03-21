@@ -8,7 +8,10 @@ import java.util.List;
 
 public class AgendaDomainMapper {
     public static AgendaEntity mapFrom(AgendaModel agendaModel) {
-        return AgendaEntity.builder().subject(agendaModel.getSubject()).build();
+        return AgendaEntity.builder()
+                .id(agendaModel.getId())
+                .subject(agendaModel.getSubject())
+                .build();
     }
 
     public static AgendaModel mapFrom(AgendaEntity agendaEntity) {

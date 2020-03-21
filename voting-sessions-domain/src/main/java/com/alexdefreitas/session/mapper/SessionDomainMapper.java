@@ -12,7 +12,7 @@ public class SessionDomainMapper {
         return SessionModel
                 .builder()
                 .sessionId(sessionEntity.getId())
-                .agendaId(sessionEntity.getId())
+                .agendaId(sessionEntity.getAgenda().getId())
                 .build();
     }
 }
