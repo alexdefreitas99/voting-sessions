@@ -12,16 +12,20 @@ public class AgendaDomainMapper {
     }
 
     public static AgendaModel mapFrom(AgendaEntity agendaEntity) {
-        return AgendaModel.builder().subject(agendaEntity.getSubject()).build();
+        return AgendaModel.builder()
+                .subject(agendaEntity.getSubject())
+                .id(agendaEntity.getId())
+                .build();
     }
 
     public static List<AgendaModel> mapFrom(Iterable<AgendaEntity> agendaEntityIterable) {
         List<AgendaModel> agendaModels = new ArrayList<>();
 
-        agendaEntityIterable.forEach(i -> agendaModels.add(
+        agendaEntityIterable.forEach(entity -> agendaModels.add(
                 AgendaModel
                         .builder()
-                        .subject(i.getSubject())
+                        .id(entity.getId())
+                        .subject(entity.getSubject())
                         .build()
         ));
         return agendaModels;

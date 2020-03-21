@@ -21,6 +21,7 @@ public class AgendaContractMapper {
     public static AgendaResponse mapFrom(AgendaModel agendaModel) {
         return AgendaResponse
                 .builder()
+                .id(agendaModel.getId())
                 .subject(agendaModel.getSubject())
                 .build();
     }
@@ -32,6 +33,7 @@ public class AgendaContractMapper {
                 .forEach(agendaModel -> agendaResponses.add(
                         AgendaResponse
                                 .builder()
+                                .id(agendaModel.getId())
                                 .subject(agendaModel.getSubject())
                                 .build()
                 ));
