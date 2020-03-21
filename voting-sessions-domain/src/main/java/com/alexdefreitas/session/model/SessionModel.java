@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 public class SessionModel {
 //    private AgendaModel agenda;
+    private Long sessionId;
     private Long agendaId;
     private Integer minuteDuration;
     private LocalDateTime dataHoraAbertura;

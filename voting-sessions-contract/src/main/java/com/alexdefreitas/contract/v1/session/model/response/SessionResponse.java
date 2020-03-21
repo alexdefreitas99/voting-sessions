@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class SessionResponse {
-    private String a;
+    private Long sessionId;
+    private Long agendaId;
 }

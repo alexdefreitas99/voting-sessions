@@ -11,6 +11,7 @@ public class SessionDomainMapper {
     public static SessionModel mapFrom(SessionEntity sessionEntity) {
         return SessionModel
                 .builder()
+                .sessionId(sessionEntity.getId())
                 .agendaId(sessionEntity.getId())
                 .build();
     }
