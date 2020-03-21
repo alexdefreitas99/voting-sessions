@@ -13,6 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "session")
 public class SessionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
