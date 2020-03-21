@@ -4,6 +4,7 @@ import com.alexdefreitas.agenda.mapper.AgendaDomainMapper;
 import com.alexdefreitas.agenda.service.AgendaService;
 import com.alexdefreitas.session.mapper.SessionDomainMapper;
 import com.alexdefreitas.session.model.SessionModel;
+import com.alexdefreitas.session.model.entity.SessionEntity;
 import com.alexdefreitas.session.repository.SessionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,8 @@ public class SessionService {
     private AgendaService agendaService;
 
     public SessionModel createVotingSession(SessionModel sessionModel) {
-        var sessionEntity = mapFrom(sessionModel);
         var agendaEntity = AgendaDomainMapper.mapFrom(agendaService.findAgenda(sessionModel.getAgendaId()));
-        sessionEntity.setAgenda(agendaEntity);
+        var sessionEntity = SessionEntity.builder().agenda(agendaEntity).build();
         return mapFrom(sessionRepository.save(sessionEntity));
     }
 
