@@ -33,7 +33,7 @@ public class SessionService {
         return mapFrom(sessionRepository.save(sessionEntity));
     }
 
-    private SessionEntity buildSessionEntity(SessionModel sessionModel, AgendaModel agendaModel) {
+    private static SessionEntity buildSessionEntity(SessionModel sessionModel, AgendaModel agendaModel) {
         return SessionEntity
                 .builder()
                 .agenda(AgendaDomainMapper.mapFrom(agendaModel))
@@ -50,13 +50,14 @@ public class SessionService {
                 ));
     }
 
-    public SessionModel findSession(Long sessionId, Long agendaId) {
-        return sessionRepository.findByIdAndAgendaId(sessionId, agendaId)
+    public SessionModel findAvailableVotingSession(Long sessionId, Long agendaId) {
+        return sessionRepository.findByIdAndAgendaIdAndClosingDateAfter(sessionId, agendaId, LocalDateTime.now())
                 .map(SessionDomainMapper::mapFrom)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
-                        "Session " + sessionId.toString() + " not found " +
-                                "with agendaId = " + agendaId.toString()
+                        "The session ".concat(sessionId.toString()) +
+                                "with agendaId = ".concat(agendaId.toString()) +
+                                "not exists or is closed"
                 ));
     }
 }

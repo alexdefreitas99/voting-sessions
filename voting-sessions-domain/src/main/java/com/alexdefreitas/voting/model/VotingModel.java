@@ -1,6 +1,6 @@
 package com.alexdefreitas.voting.model;
 
-import com.alexdefreitas.agenda.model.AgendaModel;
+import com.alexdefreitas.session.model.SessionModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class VotingModel {
     private Long id;
-    private Long agendaId;
-    private Long sessionId;
+    private SessionModel session;
     private String associatedCpf;
     private boolean vote;
 }

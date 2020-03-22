@@ -15,4 +15,13 @@ public class SessionDomainMapper {
                 .closingDate(sessionEntity.getClosingDate())
                 .build();
     }
+
+    public static SessionEntity mapFrom(SessionModel sessionModel) {
+        return SessionEntity.builder()
+                .agenda(AgendaDomainMapper.mapFrom(sessionModel.getAgendaModel()))
+                .closingDate(sessionModel.getClosingDate())
+                .openingDate(sessionModel.getOpeningDate())
+                .id(sessionModel.getSessionId())
+                .build();
+    }
 }

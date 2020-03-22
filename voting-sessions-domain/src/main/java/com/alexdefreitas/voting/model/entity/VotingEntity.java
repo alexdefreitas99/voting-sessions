@@ -1,6 +1,5 @@
 package com.alexdefreitas.voting.model.entity;
 
-import com.alexdefreitas.agenda.model.entity.AgendaEntity;
 import com.alexdefreitas.session.model.entity.SessionEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +25,7 @@ public class VotingEntity {
 
     @ManyToOne
     @JoinColumn(name = "session_id")
-    private AgendaEntity agendaEntity;
+    private SessionEntity sessionEntity;
 
     private boolean vote;
 }

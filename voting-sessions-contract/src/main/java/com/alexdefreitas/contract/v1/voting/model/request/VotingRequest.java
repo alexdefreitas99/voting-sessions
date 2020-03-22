@@ -5,13 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class VotingRequest {
-    private Long agendaId;
-    private Long sessionId;
+    @NotEmpty
     private String associatedCpf;
+    @NotNull
     private boolean vote;
 }

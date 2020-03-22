@@ -7,13 +7,16 @@ import com.alexdefreitas.voting.model.VotingModel;
 public class VotingContractMapper {
 
     public static VotingResponse mapFrom(VotingModel votingModel) {
-        return VotingResponse.builder().build();
+        return VotingResponse
+                .builder()
+                .id(votingModel.getId())
+                .build();
     }
 
     public static VotingModel mapFrom(VotingRequest votingRequest) {
         return VotingModel.builder()
-                .agendaId(votingRequest.getAgendaId())
-                .sessionId(votingRequest.getSessionId())
+                .associatedCpf(votingRequest.getAssociatedCpf())
+                .vote(votingRequest.isVote())
                 .build();
     }
 }

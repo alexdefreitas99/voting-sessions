@@ -7,10 +7,7 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,16 +21,20 @@ public class VotingController {
     @Autowired
     private VotingService votingService;
 
-    @PostMapping
+    @PostMapping("/session/{session_id}/agenda/{agenda_id}")
     @ApiOperation(value = "Vote in an agenda.", response = VotingResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = VotingResponse.class)
     })
     public ResponseEntity<VotingResponse> vote(
             @ApiParam(value = "Vote information.", required = true)
-            @Valid @RequestBody VotingRequest votingRequest
+            @Valid @RequestBody VotingRequest votingRequest,
+            @ApiParam(value = "Agenda id.", required = true)
+            @PathVariable("agenda_id") Long agendaId,
+            @ApiParam(value = "Session id.", required = true)
+            @PathVariable("session_id") Long sessionId
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(mapFrom(votingService.vote(mapFrom(votingRequest))));
+                .body(mapFrom(votingService.vote(mapFrom(votingRequest), sessionId, agendaId)));
     }
 }
