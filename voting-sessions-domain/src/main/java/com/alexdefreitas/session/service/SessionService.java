@@ -1,6 +1,7 @@
 package com.alexdefreitas.session.service;
 
 import com.alexdefreitas.agenda.mapper.AgendaDomainMapper;
+import com.alexdefreitas.agenda.model.AgendaModel;
 import com.alexdefreitas.agenda.service.AgendaService;
 import com.alexdefreitas.session.mapper.SessionDomainMapper;
 import com.alexdefreitas.session.model.SessionModel;
@@ -27,12 +28,17 @@ public class SessionService {
     }
 
     public SessionModel createVotingSession(SessionModel sessionModel) {
-        var agendaEntity = AgendaDomainMapper.mapFrom(agendaService.findAgenda(sessionModel.getAgendaModel()));
-        var sessionEntity = SessionEntity.builder()
-                .agenda(agendaEntity)
+        var agendaModel = agendaService.findAgenda(sessionModel.getAgendaId());
+        var sessionEntity = buildSessionEntity(sessionModel, agendaModel);
+        return mapFrom(sessionRepository.save(sessionEntity));
+    }
+
+    private SessionEntity buildSessionEntity(SessionModel sessionModel, AgendaModel agendaModel) {
+        return SessionEntity
+                .builder()
+                .agenda(AgendaDomainMapper.mapFrom(agendaModel))
                 .closingDate(getSessionClosingDate(sessionModel.getMinuteDuration()))
                 .build();
-        return mapFrom(sessionRepository.save(sessionEntity));
     }
 
     public SessionModel findSession(Long id) {

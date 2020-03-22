@@ -1,6 +1,7 @@
 package com.alexdefreitas.voting.service;
 
 import com.alexdefreitas.agenda.mapper.AgendaDomainMapper;
+import com.alexdefreitas.agenda.model.entity.AgendaEntity;
 import com.alexdefreitas.session.model.SessionModel;
 import com.alexdefreitas.session.service.SessionService;
 import com.alexdefreitas.voting.mapper.VotingDomainMapper;
@@ -8,6 +9,7 @@ import com.alexdefreitas.voting.model.VotingModel;
 import com.alexdefreitas.voting.model.entity.VotingEntity;
 import com.alexdefreitas.voting.repository.VotingRepository;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import org.springframework.stereotype.Service;
 
 @Service
