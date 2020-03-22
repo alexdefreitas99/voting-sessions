@@ -21,8 +21,8 @@ public class VotingService {
 
     public VotingModel vote(VotingModel votingModel) {
         var session = sessionService.findSession(votingModel.getSessionId(), votingModel.getAgendaId());
-        VotingDomainMapper.mapFrom(votingRepository.save(buildVotingEntity(votingModel, session)));
-        return VotingModel.builder().build();
+        var votingEntity = buildVotingEntity(votingModel, session);
+        return VotingDomainMapper.mapFrom(votingRepository.save(votingEntity));
     }
 
     private VotingEntity buildVotingEntity(VotingModel votingModel, SessionModel sessionModel) {
