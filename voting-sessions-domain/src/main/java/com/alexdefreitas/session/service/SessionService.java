@@ -56,8 +56,8 @@ public class SessionService {
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "The session ".concat(sessionId.toString()) +
-                                "with agendaId = ".concat(agendaId.toString()) +
-                                "not exists or is closed"
+                                " with agendaId = ".concat(agendaId.toString()) +
+                                " not exists or is closed"
                 ));
     }
 }

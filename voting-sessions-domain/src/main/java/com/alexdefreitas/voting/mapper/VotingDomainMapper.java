@@ -16,7 +16,7 @@ public class VotingDomainMapper {
         return VotingModel
                 .builder()
                 .associatedCpf(votingEntity.getAssociatedCpf())
-                .session(SessionDomainMapper.mapFrom(votingEntity.getSessionEntity()))
+                .session(SessionDomainMapper.mapFrom(votingEntity.getSession()))
                 .id(votingEntity.getId())
                 .vote(votingEntity.isVote())
                 .build();
@@ -29,7 +29,7 @@ public class VotingDomainMapper {
                 VotingModel
                         .builder()
                         .id(entity.getId())
-                        .session(SessionDomainMapper.mapFrom(entity.getSessionEntity()))
+                        .session(SessionDomainMapper.mapFrom(entity.getSession()))
                         .associatedCpf(entity.getAssociatedCpf())
                         .vote(entity.isVote())
                         .build()

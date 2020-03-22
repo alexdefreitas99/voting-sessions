@@ -25,7 +25,7 @@ public class VotingEntity {
 
     @ManyToOne
     @JoinColumn(name = "session_id")
-    private SessionEntity sessionEntity;
+    private SessionEntity session;
 
     private boolean vote;
 }

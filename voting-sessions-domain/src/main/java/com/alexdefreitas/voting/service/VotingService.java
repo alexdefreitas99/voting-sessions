@@ -2,6 +2,7 @@ package com.alexdefreitas.voting.service;
 
 import com.alexdefreitas.session.mapper.SessionDomainMapper;
 import com.alexdefreitas.session.model.SessionModel;
+import com.alexdefreitas.session.model.entity.SessionEntity;
 import com.alexdefreitas.session.service.SessionService;
 import com.alexdefreitas.validate.user.restclient.ValidateUserVote;
 import com.alexdefreitas.voting.model.VotingModel;
@@ -29,7 +30,7 @@ public class VotingService {
     private static Function<SessionModel, VotingEntity> buildVotingEntity(VotingModel votingModel) {
         return sessionModel -> VotingEntity.builder()
                 .vote(votingModel.isVote())
-                .sessionEntity(SessionDomainMapper.mapFrom(sessionModel))
+                .session(SessionDomainMapper.mapFrom(sessionModel))
                 .associatedCpf(votingModel.getAssociatedCpf())
                 .build();
     }

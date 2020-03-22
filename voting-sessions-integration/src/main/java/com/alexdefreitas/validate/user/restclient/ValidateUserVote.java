@@ -2,7 +2,6 @@ package com.alexdefreitas.validate.user.restclient;
 
 import com.alexdefreitas.validate.user.restclient.model.UserResponse;
 import com.alexdefreitas.validate.user.restclient.model.UserStatusEnum;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -14,8 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Component
 public class ValidateUserVote {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private RestTemplate restTemplate = new RestTemplate();
 
     @Value("${users.validation.heroku}")
     private String userValidationUrl;
