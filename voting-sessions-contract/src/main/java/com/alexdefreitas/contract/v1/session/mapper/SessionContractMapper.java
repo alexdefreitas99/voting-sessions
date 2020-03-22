@@ -7,7 +7,6 @@ import com.alexdefreitas.session.model.SessionModel;
 public class SessionContractMapper {
     public static SessionModel mapFrom(SessionRequest sessionRequest) {
         return SessionModel.builder()
-                .agendaId(sessionRequest.getAgenda())
                 .minuteDuration(sessionRequest.getMinuteDuration())
                 .build();
     }
@@ -17,7 +16,7 @@ public class SessionContractMapper {
                 .sessionId(sessionModel.getSessionId())
                 .openingDate(sessionModel.getOpeningDate().toString())
                 .closingDate(sessionModel.getClosingDate().toString())
-                .agendaId(sessionModel.getAgendaId())
+                .agendaId(sessionModel.getAgendaModel().getId())
                 .build();
     }
 }

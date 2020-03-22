@@ -27,8 +27,8 @@ public class SessionService {
         return LocalDateTime.now().plusMinutes(minuteDuration);
     }
 
-    public SessionModel createVotingSession(SessionModel sessionModel) {
-        var agendaModel = agendaService.findAgenda(sessionModel.getAgendaId());
+    public SessionModel createVotingSession(SessionModel sessionModel, Long agendaId) {
+        var agendaModel = agendaService.findAgenda(agendaId);
         var sessionEntity = buildSessionEntity(sessionModel, agendaModel);
         return mapFrom(sessionRepository.save(sessionEntity));
     }

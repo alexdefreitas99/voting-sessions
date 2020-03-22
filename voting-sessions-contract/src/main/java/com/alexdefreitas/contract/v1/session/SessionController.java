@@ -22,17 +22,19 @@ public class SessionController {
     @Autowired
     private SessionService sessionService;
 
-    @PostMapping("/agenda")
+    @PostMapping("/agenda/{agenda_id}")
     @ApiOperation(value = "Create a session for an agenda.", response = SessionResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = SessionResponse.class)
     })
     public ResponseEntity<SessionResponse> createSession(
             @ApiParam(value = "Session data.", required = true)
-            @Valid @RequestBody SessionRequest sessaoRequest
+            @Valid @RequestBody SessionRequest sessaoRequest,
+            @ApiParam(value = "Agenda id.", required = true)
+            @PathVariable("agenda_id") Long agendaId
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(mapFrom(sessionService.createVotingSession(mapFrom(sessaoRequest))));
+                .body(mapFrom(sessionService.createVotingSession(mapFrom(sessaoRequest), agendaId)));
     }
 
     @GetMapping(path = "/{session_id}")
