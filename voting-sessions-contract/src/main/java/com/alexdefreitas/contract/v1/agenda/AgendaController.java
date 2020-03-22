@@ -53,6 +53,6 @@ public class AgendaController {
     public ResponseEntity<AgendaResponse> getAgenda(
             @ApiParam(value = "id.", required = true)
             @PathVariable("id") Long id) {
-        return ResponseEntity.ok(mapFrom(agendaService.findAgenda(id)));
+        return ResponseEntity.ok(mapFrom(agendaService.findAgendaCalculedVotes(id)));
     }
 }

@@ -2,9 +2,9 @@ package com.alexdefreitas.voting.service;
 
 import com.alexdefreitas.session.mapper.SessionDomainMapper;
 import com.alexdefreitas.session.model.SessionModel;
-import com.alexdefreitas.session.model.entity.SessionEntity;
 import com.alexdefreitas.session.service.SessionService;
 import com.alexdefreitas.validate.user.restclient.ValidateUserVote;
+import com.alexdefreitas.voting.mapper.VotingDomainMapper;
 import com.alexdefreitas.voting.model.VotingModel;
 import com.alexdefreitas.voting.model.entity.VotingEntity;
 import com.alexdefreitas.voting.repository.VotingRepository;
@@ -16,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 import static com.alexdefreitas.voting.mapper.VotingDomainMapper.mapFrom;
 
@@ -45,6 +46,12 @@ public class VotingService {
                 .andThen(buildVotingEntity(votingModel))
                 .andThen(save())
                 .apply(sessionId, agendaId);
+    }
+
+    public Stream<VotingModel> findBySessionAgendaId(Long agendaId) {
+        return votingRepository.findBySessionAgendaId(agendaId)
+                .stream()
+                .map(VotingDomainMapper::mapFrom);
     }
 
     private Consumer<VotingModel> checkUserIsAbleToVote() {

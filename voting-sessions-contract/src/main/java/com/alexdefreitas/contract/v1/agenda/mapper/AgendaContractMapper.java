@@ -23,6 +23,8 @@ public class AgendaContractMapper {
                 .builder()
                 .id(agendaModel.getId())
                 .subject(agendaModel.getSubject())
+                .votesAgainst(agendaModel.getVotesAgainst())
+                .votesInFavor(agendaModel.getVotesInFavor())
                 .build();
     }
 

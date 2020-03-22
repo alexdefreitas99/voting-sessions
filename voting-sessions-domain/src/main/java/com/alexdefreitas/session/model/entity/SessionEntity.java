@@ -23,7 +23,7 @@ public class SessionEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_AGENDA")
+    @JoinColumn(name = "AGENDA_ID")
     private AgendaEntity agenda;
 
     @Column(name = "OPENING_DATE")

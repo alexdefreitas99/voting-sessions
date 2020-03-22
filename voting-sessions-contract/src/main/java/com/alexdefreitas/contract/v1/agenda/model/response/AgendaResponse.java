@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class AgendaResponse {
     private Long id;
     private String subject;
+    private Long votesInFavor;
+    private Long votesAgainst;
 }
