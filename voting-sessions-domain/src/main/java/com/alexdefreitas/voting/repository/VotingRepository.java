@@ -1,0 +1,9 @@
+package com.alexdefreitas.voting.repository;
+
+import com.alexdefreitas.voting.model.entity.VotingEntity;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface VotingRepository extends CrudRepository<VotingEntity, Long> {
+}

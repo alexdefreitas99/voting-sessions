@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.alexdefreitas.agenda.mapper.AgendaDomainMapper.mapFrom;
 
@@ -32,6 +33,15 @@ public class AgendaService {
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "Agenda " + agendaId.toString() + " not found."
+                ));
+    }
+
+    public AgendaModel findAgenda(AgendaModel agendaModel) {
+        return Optional.ofNullable(agendaModel)
+                .map(agendaModel1 -> findAgenda(agendaModel.getId()))
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "Agenda cannot be null."
                 ));
     }
 }

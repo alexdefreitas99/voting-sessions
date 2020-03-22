@@ -22,17 +22,17 @@ public class SessionService {
     private SessionRepository sessionRepository;
     private AgendaService agendaService;
 
+    private static LocalDateTime getSessionClosingDate(Integer minuteDuration) {
+        return LocalDateTime.now().plusMinutes(minuteDuration);
+    }
+
     public SessionModel createVotingSession(SessionModel sessionModel) {
-        var agendaEntity = AgendaDomainMapper.mapFrom(agendaService.findAgenda(sessionModel.getAgendaId()));
+        var agendaEntity = AgendaDomainMapper.mapFrom(agendaService.findAgenda(sessionModel.getAgendaModel()));
         var sessionEntity = SessionEntity.builder()
                 .agenda(agendaEntity)
                 .closingDate(getSessionClosingDate(sessionModel.getMinuteDuration()))
                 .build();
         return mapFrom(sessionRepository.save(sessionEntity));
-    }
-
-    private static LocalDateTime getSessionClosingDate(Integer minuteDuration) {
-        return LocalDateTime.now().plusMinutes(minuteDuration);
     }
 
     public SessionModel findSession(Long id) {
@@ -41,6 +41,16 @@ public class SessionService {
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "Session " + id.toString() + " not found."
+                ));
+    }
+
+    public SessionModel findSession(Long sessionId, Long agendaId) {
+        return sessionRepository.findByIdAndAgendaId(sessionId, agendaId)
+                .map(SessionDomainMapper::mapFrom)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Session " + sessionId.toString() + " not found " +
+                                "with agendaId = " + agendaId.toString()
                 ));
     }
 }

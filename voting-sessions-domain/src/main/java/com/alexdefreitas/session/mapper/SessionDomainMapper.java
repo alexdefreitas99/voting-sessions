@@ -1,5 +1,6 @@
 package com.alexdefreitas.session.mapper;
 
+import com.alexdefreitas.agenda.mapper.AgendaDomainMapper;
 import com.alexdefreitas.session.model.SessionModel;
 import com.alexdefreitas.session.model.entity.SessionEntity;
 
@@ -10,7 +11,7 @@ public class SessionDomainMapper {
                 .builder()
                 .sessionId(sessionEntity.getId())
                 .openingDate(sessionEntity.getOpeningDate())
-                .agendaId(sessionEntity.getAgenda().getId())
+                .agendaModel(AgendaDomainMapper.mapFrom(sessionEntity.getAgenda()))
                 .closingDate(sessionEntity.getClosingDate())
                 .build();
     }
