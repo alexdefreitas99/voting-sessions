@@ -1,13 +1,14 @@
 package com.alexdefreitas;
 
 //import org.junit.jupiter.api.Test;
+//import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class VotingSessionsApplicationTests {
 
 //	@Test
-//	void contextLoads() {
-//	}
+	void contextLoads() {
+	}
 
 }

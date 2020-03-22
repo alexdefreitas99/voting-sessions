@@ -6,8 +6,9 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_11
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testCompile group: 'junit', name: 'junit', version: '4.12'
+	testImplementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation('org.junit.jupiter:junit-jupiter:5.6.1')
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
@@ -48,5 +49,10 @@ subprojects {
 
 		testCompileOnly 'org.projectlombok:lombok:1.18.12'
 		testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
+		testImplementation('org.junit.jupiter:junit-jupiter:5.6.1')
 	}
 }
