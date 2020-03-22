@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VotingRepository extends CrudRepository<VotingEntity, Long> {
+    Boolean existsByAssociatedCpfAndSessionId(String associatedCpf, Long sessionId);
 }
