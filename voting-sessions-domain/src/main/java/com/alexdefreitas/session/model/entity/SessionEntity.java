@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class SessionEntity {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
