@@ -1,3 +1,5 @@
 rootProject.name = 'voting-sessions'
 include 'voting-sessions-contract', 'voting-sessions-domain', 'voting-sessions-queue'
+include 'voting-sessions-job'
+include 'voting-sessions-integration'
 

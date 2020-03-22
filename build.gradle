@@ -12,6 +12,7 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	compile project(":voting-sessions-contract")
+	compile project(":voting-sessions-job")
 }
 
 allprojects {
