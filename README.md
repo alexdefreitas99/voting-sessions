@@ -1,5 +1,5 @@
 # Voting session
-https://travis-ci.org/alexdefreitas99/voting-sessions.svg?branch=master
+[![Build Status](https://travis-ci.org/alexdefreitas99/voting-sessions.svg?branch=master)](https://travis-ci.org/alexdefreitas99/voting-sessions)
 
 This is a Java project to manage member voting sessions.
 
