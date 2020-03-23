@@ -35,15 +35,6 @@ public class AgendaController {
                 .body(mapFrom(agendaService.createAgenda(mapFrom(agendaRequest))));
     }
 
-    @GetMapping
-    @ApiOperation(value = "Find all agenda.", response = AgendaResponse.class, responseContainer = "List")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = AgendaResponse.class, responseContainer = "List"),
-    })
-    public ResponseEntity<List<AgendaResponse>> findAllAgenda() {
-        return ResponseEntity.ok(mapFrom(agendaService.findAll()));
-    }
-
     @GetMapping("/{id}")
     @ApiOperation(value = "Get agenda")
     @ApiResponses(value = {

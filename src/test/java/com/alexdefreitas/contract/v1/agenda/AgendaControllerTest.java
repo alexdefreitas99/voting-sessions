@@ -17,9 +17,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Optional;
+
 import static com.alexdefreitas.contract.v1.agenda.stub.AgendaControllerStub.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -27,7 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
-//@WebMvcTest(AgendaController.class)
 @SpringBootTest
 public class AgendaControllerTest {
 
@@ -78,5 +80,31 @@ public class AgendaControllerTest {
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(status().is(400));
+    }
+
+    @Test
+    public void getAgendaThatExists() throws Exception {
+        when(agendaRepository.findById(any())).thenReturn(Optional.of(mockAgendaEntity()));
+
+        this.mockMvc.perform(get("/v1/agenda/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(status().is(200))
+                .andExpect(jsonPath("$.id").value(mockAgendaResponse().getId()))
+                .andExpect(jsonPath("$.subject").value(mockAgendaResponse().getSubject()))
+                .andExpect(jsonPath("$.votesAgainst").value(mockAgendaResponse().getVotesAgainst()))
+                .andExpect(jsonPath("$.votesInFavor").value(mockAgendaResponse().getVotesInFavor()));
+    }
+
+    @Test
+    public void getAgendaThatNotExists() throws Exception {
+        when(agendaRepository.findById(any())).thenReturn(Optional.empty());
+
+        this.mockMvc.perform(get("/v1/agenda/2")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(status().is(404));
     }
 }

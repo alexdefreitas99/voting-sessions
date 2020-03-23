@@ -33,7 +33,7 @@ public class AgendaService {
     public AgendaModel findAgenda(Long agendaId) {
         return agendaRepository.findById(agendaId)
                 .map(AgendaDomainMapper::mapFrom)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Agenda not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda not found"));
     }
 
     public AgendaModel findAgendaCalculedVotes(Long agendaId) {
