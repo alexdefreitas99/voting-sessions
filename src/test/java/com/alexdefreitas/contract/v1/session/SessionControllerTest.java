@@ -1,7 +1,6 @@
 package com.alexdefreitas.contract.v1.session;
 
 import com.alexdefreitas.agenda.service.AgendaService;
-import com.alexdefreitas.contract.v1.session.stub.SessionControllerStub;
 import com.alexdefreitas.session.repository.SessionRepository;
 import com.alexdefreitas.session.service.SessionService;
 import com.alexdefreitas.voting.service.VotingService;
@@ -17,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
-import static com.alexdefreitas.contract.v1.session.stub.SessionControllerStub.*;
+import static com.alexdefreitas.contract.v1.session.stub.SessionControllerStub.mockSessionEntity;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

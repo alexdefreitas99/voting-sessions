@@ -18,4 +18,5 @@ public class SessionModel {
     private Integer minuteDuration;
     private LocalDateTime openingDate;
     private LocalDateTime closingDate;
+    private boolean closed;
 }

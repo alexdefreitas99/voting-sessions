@@ -40,8 +40,8 @@ public class SessionController {
     @GetMapping(path = "/{session_id}")
     @ApiOperation(value = "Find session by id.", response = SessionResponse.class)
     @ApiResponses(value = {
-         @ApiResponse(code = 200, message = "OK", response = SessionResponse.class),
-         @ApiResponse(code = 404, message = "Session {session_id} not found.", response = DefaultSpringException.class)
+            @ApiResponse(code = 200, message = "OK", response = SessionResponse.class),
+            @ApiResponse(code = 404, message = "Session {session_id} not found.", response = DefaultSpringException.class)
     })
     public ResponseEntity<SessionResponse> findSession(
             @ApiParam(value = "Session id.", required = true)

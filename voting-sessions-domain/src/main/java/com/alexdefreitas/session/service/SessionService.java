@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static com.alexdefreitas.session.mapper.SessionDomainMapper.mapFrom;
 
@@ -27,18 +28,22 @@ public class SessionService {
         return LocalDateTime.now().plusMinutes(minuteDuration);
     }
 
-    public SessionModel createVotingSession(SessionModel sessionModel, Long agendaId) {
-        var agendaModel = agendaService.findAgenda(agendaId);
-        var sessionEntity = buildSessionEntity(sessionModel, agendaModel);
-        return mapFrom(sessionRepository.save(sessionEntity));
-    }
-
     private static SessionEntity buildSessionEntity(SessionModel sessionModel, AgendaModel agendaModel) {
         return SessionEntity
                 .builder()
                 .agenda(AgendaDomainMapper.mapFrom(agendaModel))
                 .closingDate(getSessionClosingDate(sessionModel.getMinuteDuration()))
                 .build();
+    }
+
+    public SessionModel createVotingSession(SessionModel sessionModel, Long agendaId) {
+        var agendaModel = agendaService.findAgenda(agendaId);
+        var sessionEntity = buildSessionEntity(sessionModel, agendaModel);
+        return mapFrom(save(sessionEntity));
+    }
+
+    public SessionEntity save(SessionEntity sessionEntity) {
+        return sessionRepository.save(sessionEntity);
     }
 
     public SessionModel findSession(Long id) {
@@ -59,5 +64,9 @@ public class SessionService {
                                 " with agendaId = ".concat(agendaId.toString()) +
                                 " not exists or is closed"
                 ));
+    }
+
+    public List<SessionModel> findAll(){
+        return mapFrom(sessionRepository.findAll());
     }
 }

@@ -32,4 +32,7 @@ public class SessionEntity {
 
     @Column(name = "CLOSING_DATE")
     private LocalDateTime closingDate;
+
+    @Column(name = "CLOSED")
+    private boolean closed;
 }
