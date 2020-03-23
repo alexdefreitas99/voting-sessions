@@ -1,4 +1,5 @@
 # Voting session
+https://travis-ci.org/alexdefreitas99/voting-sessions.svg?branch=master
 
 This is a Java project to manage member voting sessions.
 
