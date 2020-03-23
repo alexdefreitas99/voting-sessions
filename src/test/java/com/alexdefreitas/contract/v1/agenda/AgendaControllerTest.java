@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -51,7 +50,7 @@ public class AgendaControllerTest {
 
     @Test
     public void createAgendaWithSucess() throws Exception {
-        String json = new ObjectMapper().writeValueAsString(mockAgendaRequest());
+        String json = new ObjectMapper().writeValueAsString(mockAgendaRequestSucess());
         when(agendaRepository.save(any())).thenReturn(mockAgendaEntity());
 
         this.mockMvc.perform(post("/v1/agenda")
@@ -65,5 +64,19 @@ public class AgendaControllerTest {
                 .andExpect(jsonPath("$.subject").value(mockAgendaResponse().getSubject()))
                 .andExpect(jsonPath("$.votesAgainst").value(mockAgendaResponse().getVotesAgainst()))
                 .andExpect(jsonPath("$.votesInFavor").value(mockAgendaResponse().getVotesInFavor()));
+    }
+
+    @Test
+    public void createAgendaWithoutSendSubject() throws Exception {
+        String json = new ObjectMapper().writeValueAsString(mockAgendaRequestError());
+        when(agendaRepository.save(any())).thenReturn(mockAgendaEntity());
+
+        this.mockMvc.perform(post("/v1/agenda")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(status().is(400));
     }
 }

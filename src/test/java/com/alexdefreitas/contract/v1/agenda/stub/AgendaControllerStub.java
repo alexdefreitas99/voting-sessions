@@ -5,12 +5,18 @@ import com.alexdefreitas.contract.v1.agenda.model.request.AgendaRequest;
 import com.alexdefreitas.contract.v1.agenda.model.response.AgendaResponse;
 
 public class AgendaControllerStub {
-    public static AgendaRequest mockAgendaRequest() {
+    public static AgendaRequest mockAgendaRequestSucess() {
         return AgendaRequest.builder().subject("Mock").build();
     }
-    public  static AgendaEntity mockAgendaEntity() {
-        return AgendaEntity.builder().id(1L).subject(mockAgendaRequest().getSubject()).build();
+
+    public static AgendaRequest mockAgendaRequestError() {
+        return AgendaRequest.builder().build();
     }
+
+    public  static AgendaEntity mockAgendaEntity() {
+        return AgendaEntity.builder().id(1L).subject(mockAgendaRequestSucess().getSubject()).build();
+    }
+
     public static AgendaResponse mockAgendaResponse(){
         return AgendaResponse
                 .builder()
