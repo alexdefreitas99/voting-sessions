@@ -47,7 +47,7 @@ public class SessionController {
             @ApiParam(value = "Session id.", required = true)
             @PathVariable("session_id") Long id
     ) {
-        return ResponseEntity.status(HttpStatus.CREATED)
+        return ResponseEntity.status(HttpStatus.OK)
                 .body(mapFrom(sessionService.findSession(id)));
     }
 }
