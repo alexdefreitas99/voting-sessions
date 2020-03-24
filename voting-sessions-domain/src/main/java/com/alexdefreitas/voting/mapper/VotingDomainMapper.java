@@ -9,7 +9,6 @@ import java.util.List;
 
 public class VotingDomainMapper {
     private VotingDomainMapper() {
-
     }
 
     public static VotingModel mapFrom(VotingEntity votingEntity) {

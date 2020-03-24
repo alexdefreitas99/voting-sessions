@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SessionDomainMapper {
+    private SessionDomainMapper() {
+    }
 
     public static SessionModel mapFrom(SessionEntity sessionEntity) {
         return SessionModel

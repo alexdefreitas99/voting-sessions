@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AgendaDomainMapper {
+    private AgendaDomainMapper() {
+    }
+
     public static AgendaEntity mapFrom(AgendaModel agendaModel) {
         return AgendaEntity.builder()
                 .id(agendaModel.getId())
