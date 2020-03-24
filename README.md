@@ -8,7 +8,9 @@ Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java 
 # How to use the API (Application Programming Interface)
 ## Step 1: 
 Create a agenda: 
+
 Request:
+
 [POST] http://localhost:8081/voting-sessions/v1/agenda
 ```
 { "subject": "Agenda testing vote" }
@@ -25,7 +27,9 @@ Response:
 
 ## Step 2:
 Create a voting session to this agenda:
+
 Request:
+
 [POST] http://localhost:8081/voting-sessions/v1/session/agenda/4
 ```
 {"minuteDuration": 3 }
@@ -44,6 +48,7 @@ Response:
 Vote:
 
 Request:
+
 [POST] http://localhost:8081/voting-sessions/v1/voting/session/10/agenda/4
 ```
 {
