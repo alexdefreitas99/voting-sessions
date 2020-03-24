@@ -1,5 +1,9 @@
 # Voting session
 [![Build Status](https://travis-ci.org/alexdefreitas99/voting-sessions.svg?branch=master)](https://travis-ci.org/alexdefreitas99/voting-sessions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alexdefreitas99_voting-sessions&metric=alert_status)](https://sonarcloud.io/dashboard?id=alexdefreitas99_voting-sessions)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alexdefreitas99_voting-sessions&metric=coverage)](https://sonarcloud.io/dashboard?id=alexdefreitas99_voting-sessions)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=alexdefreitas99_voting-sessions&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=alexdefreitas99_voting-sessions)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=alexdefreitas99_voting-sessions&metric=code_smells)](https://sonarcloud.io/dashboard?id=alexdefreitas99_voting-sessions)
 
 This is a Java project to manage member voting sessions.
 
