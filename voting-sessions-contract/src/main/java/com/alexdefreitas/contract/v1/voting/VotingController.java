@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import static com.alexdefreitas.contract.v1.voting.mapper.VotingContractMapper.mapFrom;
 
 @RestController
-@Api("Session")
+@Api("Voting operations.")
 @RequestMapping("v1/voting")
 public class VotingController {
 
@@ -22,7 +22,7 @@ public class VotingController {
     private VotingService votingService;
 
     @PostMapping("/session/{session_id}/agenda/{agenda_id}")
-    @ApiOperation(value = "Vote in an agenda.", response = VotingResponse.class)
+    @ApiOperation(value = "Vote on the session agenda.", response = VotingResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = VotingResponse.class)
     })

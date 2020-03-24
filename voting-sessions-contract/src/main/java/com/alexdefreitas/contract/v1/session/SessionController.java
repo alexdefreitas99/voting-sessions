@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import static com.alexdefreitas.contract.v1.session.mapper.SessionContractMapper.mapFrom;
 
 @RestController
-@Api("Session")
+@Api("Session operations")
 @RequestMapping("v1/session")
 public class SessionController {
 

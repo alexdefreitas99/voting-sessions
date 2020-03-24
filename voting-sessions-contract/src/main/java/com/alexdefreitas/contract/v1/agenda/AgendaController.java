@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import static com.alexdefreitas.contract.v1.agenda.mapper.AgendaContractMapper.mapFrom;
 
 @RestController
-@Api("Agenda")
+@Api("Agenda operations")
 @RequestMapping("v1/agenda")
 public class AgendaController {
 
@@ -47,8 +47,6 @@ public class AgendaController {
     public ResponseEntity<AgendaResponse> getAgenda(
             @ApiParam(value = "id.", required = true)
             @PathVariable("id") Long id) {
-        System.out.println("Controller id" + applicationContext.getId());
-        System.out.println("Controller startup date" + applicationContext.getStartupDate());
         return ResponseEntity.ok(mapFrom(agendaService.getAgendaCalculedVotes(id)));
     }
 }
