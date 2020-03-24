@@ -27,11 +27,11 @@ Create a agenda:
 Request:
 
 [POST] http://localhost:8081/voting-sessions/v1/agenda
-```
+```json
 { "subject": "Agenda testing vote" }
 ```
 Response: 
-```
+```json
 {
   "id": 4,
   "subject": "Agenda testing vote",
@@ -46,11 +46,11 @@ Create a voting session to this agenda:
 Request:
 
 [POST] http://localhost:8081/voting-sessions/v1/session/agenda/4
-```
-{"minuteDuration": 3 }
+```json
+{ "minuteDuration": 3 }
 ```
 Response: 
-```
+```json
 {
   "sessionId": 10,
   "agendaId": 4,
@@ -65,14 +65,14 @@ Vote:
 Request:
 
 [POST] http://localhost:8081/voting-sessions/v1/voting/session/10/agenda/4
-```
+```json
 {
 	"associatedCpf": "54125851085",
 	"vote": true
 }
 ```
 Response:
-```
+```json
 {
 	"id": 20
 }
@@ -81,7 +81,7 @@ Response:
 ## To see the total votes in a agenda 
 [GET] http://localhost:8081/voting-sessions/v1/agenda/4
 Response: 
-```
+```json
 {
   "id": 4,
   "subject": "Agenda testing vote",
