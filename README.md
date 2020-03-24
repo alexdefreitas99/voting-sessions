@@ -11,15 +11,20 @@ This is a Java project to manage member voting sessions.
 Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java OpenJDK 11.
 
 # Technologies used
- ° Java 11.
+- **Java 11.** 
+- **Spring boot.**
+- **Gradle.**
+- **MariaDB in AWS cloud.**
+- **Apache kafka.**
  
- ° Spring boot.
- 
- ° Gradle.
- 
- ° MariaDB in AWS cloud.
- 
- ° Apache kafka.
+# Project architecture
+The project was based on the hexagonal architecture, which consists of dividing an application into layers according to its responsibilities and emphasizing a particular layer.
+
+- **Contract:** The responsibility of this layer is to serve functionality for other applications.
+- **Domain:** This layer contains the domain business rule (The if's and else's).
+- **Integration:** It's external service client.
+- **Job:** Job scheduling that runs programmatically.
+- **Queu:** Messaging settings, consumers and senders.
 
 # How to run this project locally
 
