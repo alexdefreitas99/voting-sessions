@@ -1,6 +1,6 @@
 package com.alexdefreitas.contract.v1.session;
 
-import com.alexdefreitas.contract.config.DefaultSpringException;
+import com.alexdefreitas.contract.config.DefaultSpringErrorHandler;
 import com.alexdefreitas.contract.v1.session.model.request.SessionRequest;
 import com.alexdefreitas.contract.v1.session.model.response.SessionResponse;
 import com.alexdefreitas.session.service.SessionService;
@@ -41,7 +41,7 @@ public class SessionController {
     @ApiOperation(value = "Find session by id.", response = SessionResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = SessionResponse.class),
-            @ApiResponse(code = 404, message = "Session {session_id} not found.", response = DefaultSpringException.class)
+            @ApiResponse(code = 404, message = "Session {session_id} not found.", response = DefaultSpringErrorHandler.class)
     })
     public ResponseEntity<SessionResponse> findSession(
             @ApiParam(value = "Session id.", required = true)

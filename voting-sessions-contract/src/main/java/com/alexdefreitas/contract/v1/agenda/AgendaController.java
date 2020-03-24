@@ -1,7 +1,7 @@
 package com.alexdefreitas.contract.v1.agenda;
 
 import com.alexdefreitas.agenda.service.AgendaService;
-import com.alexdefreitas.contract.config.DefaultSpringException;
+import com.alexdefreitas.contract.config.DefaultSpringErrorHandler;
 import com.alexdefreitas.contract.v1.agenda.model.request.AgendaRequest;
 import com.alexdefreitas.contract.v1.agenda.model.response.AgendaResponse;
 import io.swagger.annotations.*;
@@ -42,7 +42,7 @@ public class AgendaController {
     @ApiOperation(value = "Get agenda")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = AgendaResponse.class),
-            @ApiResponse(code = 404, message = "Agenda {agenda_id} not found.", response = DefaultSpringException.class)
+            @ApiResponse(code = 404, message = "Agenda {agenda_id} not found.", response = DefaultSpringErrorHandler.class)
     })
     public ResponseEntity<AgendaResponse> getAgenda(
             @ApiParam(value = "id.", required = true)

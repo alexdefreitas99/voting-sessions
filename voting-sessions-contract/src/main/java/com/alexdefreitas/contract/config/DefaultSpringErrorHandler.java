@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DefaultSpringException {
+public class DefaultSpringErrorHandler {
     private Long timestamp;
     private Long status;
     private String error;
