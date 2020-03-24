@@ -55,17 +55,6 @@ public class SessionService {
                 ));
     }
 
-    public SessionModel findAvailableVotingSession(Long sessionId, Long agendaId) {
-        return sessionRepository.findByIdAndAgendaIdAndClosingDateAfter(sessionId, agendaId, LocalDateTime.now())
-                .map(SessionDomainMapper::mapFrom)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND,
-                        "The session ".concat(sessionId.toString()) +
-                                " with agendaId = ".concat(agendaId.toString()) +
-                                " not exists or is closed"
-                ));
-    }
-
     public List<SessionModel> findAll(){
         return mapFrom(sessionRepository.findAll());
     }

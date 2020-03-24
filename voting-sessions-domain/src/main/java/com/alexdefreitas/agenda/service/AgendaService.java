@@ -6,7 +6,7 @@ import com.alexdefreitas.agenda.repository.AgendaRepository;
 import com.alexdefreitas.session.model.SessionModel;
 import com.alexdefreitas.voting.model.VotingModel;
 import com.alexdefreitas.voting.service.VotingService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,12 +16,10 @@ import java.util.stream.Stream;
 import static com.alexdefreitas.agenda.mapper.AgendaDomainMapper.mapFrom;
 
 @Service
+@AllArgsConstructor
 public class AgendaService {
 
-    @Autowired
     private AgendaRepository agendaRepository;
-
-    @Autowired
     private VotingService votingService;
 
     private static void updateVotes(AgendaModel agendaModel, VotingModel votingModel) {

@@ -2,7 +2,7 @@ package com.alexdefreitas.voting.service;
 
 import com.alexdefreitas.session.mapper.SessionDomainMapper;
 import com.alexdefreitas.session.model.SessionModel;
-import com.alexdefreitas.session.service.SessionService;
+import com.alexdefreitas.session.repository.SessionRepository;
 import com.alexdefreitas.validate.user.restclient.ValidateUserVote;
 import com.alexdefreitas.voting.mapper.VotingDomainMapper;
 import com.alexdefreitas.voting.model.VotingModel;
@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -25,7 +26,7 @@ import static com.alexdefreitas.voting.mapper.VotingDomainMapper.mapFrom;
 public class VotingService {
 
     private VotingRepository votingRepository;
-    private SessionService sessionService;
+    private SessionRepository sessionRepository;
     private ValidateUserVote validateUserVote;
 
     private static Function<SessionModel, VotingEntity> buildVotingEntity(VotingModel votingModel) {
@@ -72,6 +73,15 @@ public class VotingService {
     }
 
     private BiFunction<Long, Long, SessionModel> findAvailableSession() {
-        return (sessionId, agendaId) -> sessionService.findAvailableVotingSession(sessionId, agendaId);
+        return (sessionId, agendaId) ->
+                sessionRepository
+                        .findByIdAndAgendaIdAndClosingDateAfter(sessionId, agendaId, LocalDateTime.now())
+                        .map(SessionDomainMapper::mapFrom)
+                        .orElseThrow(() -> new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "The session ".concat(sessionId.toString()) +
+                                        " with agendaId = ".concat(agendaId.toString()) +
+                                        " not exists or is closed"
+                        ));
     }
 }
