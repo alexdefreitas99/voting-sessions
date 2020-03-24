@@ -10,6 +10,13 @@ This is a Java project to manage member voting sessions.
 
 Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java OpenJDK 11.
 
+# Technologies used
+ ° Java 11.
+ ° Spring boot/Spring data.
+ ° Gradle.
+ ° MariaDB in AWS cloud.
+ ° Apache kafka.
+
 # How to run this project locally
 
 ```bash
