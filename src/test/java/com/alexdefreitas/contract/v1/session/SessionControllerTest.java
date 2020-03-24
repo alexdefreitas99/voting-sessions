@@ -1,5 +1,6 @@
 package com.alexdefreitas.contract.v1.session;
 
+import com.alexdefreitas.VotingSessionsJob;
 import com.alexdefreitas.agenda.service.AgendaService;
 import com.alexdefreitas.session.repository.SessionRepository;
 import com.alexdefreitas.session.service.SessionService;
@@ -7,6 +8,12 @@ import com.alexdefreitas.voting.service.VotingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,6 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
 @SpringBootTest
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class SessionControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -39,6 +47,9 @@ public class SessionControllerTest {
 
     @MockBean
     private SessionRepository sessionRepository;
+
+    @MockBean
+    private VotingSessionsJob votingSessionsJob;
 
     @Test
     public void getSessionThatExists() throws Exception {
