@@ -20,3 +20,8 @@ addons:
 
 script:
   - ./gradlew sonarqube
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "823b83fb-ccb8-4196-ba76-d568c4df1cdc"
