@@ -12,9 +12,13 @@ Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java 
 
 # Technologies used
  ° Java 11.
- ° Spring boot/Spring data.
+ 
+ ° Spring boot.
+ 
  ° Gradle.
+ 
  ° MariaDB in AWS cloud.
+ 
  ° Apache kafka.
 
 # How to run this project locally
