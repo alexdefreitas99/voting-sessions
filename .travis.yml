@@ -11,3 +11,12 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
+addons:
+  sonarcloud:
+    organization: "alexdefreitas99"
+    token:
+      secure: "i5uCCM6tGk9gATQGVUZVZZSebS5nWw8vpnVmDilz127WNF1oNSqUiiLRQkSdM81R6VX0hnJDDVgllEqLyEpoL8dhk0KvVgdP3cCdxi3EdjqIgkgAkd/KQVEoRoD7ZqvOdbryDjL1ljCZoRdbFqGcfxNd70CTGkVXrpBch70qEL2lqTe0L4mMGNFFanGgxpXsIZzaN6cLUvdhhxT9XaLjhmtTo7kM7hXvKmQ8odfXC4ajtOy/SowVgTkKdyLdaFD1x5KSPaa5FNRzdmy5sCtE1osJlMziFdzM1RRcMv77vgZ/rGHLB/SLhXFIc5u/lhcOZdPnbL+zPvXDMQ8lpvBx+3O+u55xpNKV+AIDVOVd7mg+CtQ8mcHTiVwgOsl8n7ZNiwdU3bKlx29wGuHS8AB4DfeM+msUY5k7KqcUYUa2DW/Yb13x3R1gIi0VWzCa3Tz4lAjrxPE8uwvYZeH+E+wWbtedzu1Mbn8eicB53eEBrifPWGo2VPXkM+N1g46fFwrurUexpjJUsZu0RB3nOfvP7n+4aaIZ/CVhsoMTdg7Cqcfog0avw0W5T+PtdWodKD9fgM9q9hGHsBlRvn7ia2Ug2byBsqYISzQ59yHmKtrRq2/qikZmm7TkfHazxDPebn+yKV8NjU8l0xQ1bX/TmD/fasPvpVX8uxw57RlT5FGLFnQ="
+
+script:
+  - ./gradlew sonarqube
