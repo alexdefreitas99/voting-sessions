@@ -20,9 +20,9 @@ Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java 
 # Project architecture
 The project was based on the hexagonal architecture, which consists of dividing an application into layers according to its responsibilities and emphasizing a particular layer.
 
-- **Contract:** The responsibility of this layer is to serve functionality for other applications.
+- **Contract:** This is the main layer and your responsibility is to serve functionality to other applications.
 - **Domain:** This layer contains the domain business rule (The if's and else's).
-- **Integration:** It's external service client.
+- **Integration:** This is an external service client
 - **Job:** Job scheduling that runs programmatically.
 - **Queu:** Messaging settings, consumers and senders.
 
