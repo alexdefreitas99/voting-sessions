@@ -7,14 +7,18 @@ Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java 
 
 # How to run this project locally
 
+```bash
 $ make run # Run the app
-
+```
+```bash
 $ make docker-stop # Stop docker
-
+```
+```bash
 $ make docker-build # build docker image
-
+```
+```bash
 $ make docker-run # run docker image
-
+```
 
 # How to use the API (Application Programming Interface)
 ## Step 1: 
