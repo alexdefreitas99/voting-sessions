@@ -10,6 +10,26 @@ This is a Java project to manage member voting sessions.
 
 Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java OpenJDK 11.
 
+# Technologies used
+- **Java 11.** 
+- **Spring boot.**
+- **Gradle.**
+- **MariaDB in AWS cloud.**
+- **Apache kafka.**
+ 
+# Project architecture
+The project was based on the hexagonal architecture, which consists of dividing an application into layers according to its responsibilities and emphasizing a particular layer.
+
+- **Contract:** This is the main layer and your responsibility is to serve functionality to other applications.
+- **Domain:** This layer contains the domain business rule (The if's and else's).
+- **Integration:** This is an external service client
+- **Job:** Job scheduling that runs programmatically.
+- **Queu:** Messaging settings, consumers and senders.
+
+# Documentation
+## Swagger
+http://localhost:8081/voting-sessions/swagger-ui.html
+
 # How to run this project locally
 
 ```bash
@@ -102,18 +122,4 @@ Response:
 Obs: The result of each session will only be available after closing
 ```bash
 $ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic agenda.queuing --from-beginning
-```
-
-# Documentation
-## Swagger
-http://localhost:8081/voting-sessions/swagger-ui.html
-
-# Quality
-## SonarQube
-```bash
-$ docker pull sonarqube && docker run -d --name sonarqube -p 9000:9000 sonarqube
-```
-
-```bash
-$ ./gradlew -Dsonar.host.url=http://localhost:9000 sonarqube
 ```
