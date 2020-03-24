@@ -26,6 +26,10 @@ The project was based on the hexagonal architecture, which consists of dividing 
 - **Job:** Job scheduling that runs programmatically.
 - **Queu:** Messaging settings, consumers and senders.
 
+# Documentation
+## Swagger
+http://localhost:8081/voting-sessions/swagger-ui.html
+
 # How to run this project locally
 
 ```bash
@@ -118,18 +122,4 @@ Response:
 Obs: The result of each session will only be available after closing
 ```bash
 $ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic agenda.queuing --from-beginning
-```
-
-# Documentation
-## Swagger
-http://localhost:8081/voting-sessions/swagger-ui.html
-
-# Quality
-## SonarQube
-```bash
-$ docker pull sonarqube && docker run -d --name sonarqube -p 9000:9000 sonarqube
-```
-
-```bash
-$ ./gradlew -Dsonar.host.url=http://localhost:9000 sonarqube
 ```
