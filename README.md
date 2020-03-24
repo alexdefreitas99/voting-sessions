@@ -7,14 +7,18 @@ Simple Spring Boot server application developed with Spring Boot 2.1.7 and Java 
 
 # How to run this project locally
 
+```bash
 $ make run # Run the app
-
+```
+```bash
 $ make docker-stop # Stop docker
-
+```
+```bash
 $ make docker-build # build docker image
-
+```
+```bash
 $ make docker-run # run docker image
-
+```
 
 # How to use the API (Application Programming Interface)
 ## Step 1: 
@@ -23,11 +27,11 @@ Create a agenda:
 Request:
 
 [POST] http://localhost:8081/voting-sessions/v1/agenda
-```
+```json
 { "subject": "Agenda testing vote" }
 ```
 Response: 
-```
+```json
 {
   "id": 4,
   "subject": "Agenda testing vote",
@@ -42,11 +46,11 @@ Create a voting session to this agenda:
 Request:
 
 [POST] http://localhost:8081/voting-sessions/v1/session/agenda/4
-```
-{"minuteDuration": 3 }
+```json
+{ "minuteDuration": 3 }
 ```
 Response: 
-```
+```json
 {
   "sessionId": 10,
   "agendaId": 4,
@@ -61,14 +65,14 @@ Vote:
 Request:
 
 [POST] http://localhost:8081/voting-sessions/v1/voting/session/10/agenda/4
-```
+```json
 {
 	"associatedCpf": "54125851085",
 	"vote": true
 }
 ```
 Response:
-```
+```json
 {
 	"id": 20
 }
@@ -76,8 +80,9 @@ Response:
 
 ## To see the total votes in a agenda 
 [GET] http://localhost:8081/voting-sessions/v1/agenda/4
+
 Response: 
-```
+```json
 {
   "id": 4,
   "subject": "Agenda testing vote",
@@ -90,7 +95,9 @@ Response:
 
 ## To see the total votes of the session agendas.
 Obs: The result of each session will only be available after closing
+```bash
 $ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic agenda.queuing --from-beginning
+```
 
 # Documentation
 ## Swagger
@@ -98,6 +105,10 @@ http://localhost:8081/voting-sessions/swagger-ui.html
 
 # Quality
 ## SonarQube
+```bash
 $ docker pull sonarqube && docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
 
+```bash
 $ ./gradlew -Dsonar.host.url=http://localhost:9000 sonarqube
+```
