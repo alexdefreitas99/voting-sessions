@@ -6,14 +6,12 @@ import com.alexdefreitas.contract.v1.agenda.model.request.AgendaRequest;
 import com.alexdefreitas.contract.v1.agenda.model.response.AgendaResponse;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 import static com.alexdefreitas.contract.v1.agenda.mapper.AgendaContractMapper.mapFrom;
 
@@ -51,6 +49,6 @@ public class AgendaController {
             @PathVariable("id") Long id) {
         System.out.println("Controller id" + applicationContext.getId());
         System.out.println("Controller startup date" + applicationContext.getStartupDate());
-        return ResponseEntity.ok(mapFrom(agendaService.findAgendaCalculedVotes(id)));
+        return ResponseEntity.ok(mapFrom(agendaService.getAgendaCalculedVotes(id)));
     }
 }

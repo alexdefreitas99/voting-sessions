@@ -57,11 +57,11 @@ public class VotingSessionsJob {
     }
 
     private VotingResults getVotingResults(SessionModel sessionModel) {
-        var agenda = agendaService.findAgendaCalculedVotes(sessionModel.getAgendaModel().getId());
-        return VotingResults.builder().agendaId(agenda.getId())
+        agendaService.calculateVotesBySession(sessionModel);
+        return VotingResults.builder().agendaId(sessionModel.getAgendaModel().getId())
                 .sessionId(sessionModel.getSessionId())
-                .votesAgainst(agenda.getVotesAgainst())
-                .votesInFavor(agenda.getVotesInFavor())
+                .votesAgainst(sessionModel.getAgendaModel().getVotesAgainst())
+                .votesInFavor(sessionModel.getAgendaModel().getVotesInFavor())
                 .build();
     }
 

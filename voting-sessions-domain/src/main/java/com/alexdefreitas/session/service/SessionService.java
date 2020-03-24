@@ -37,7 +37,7 @@ public class SessionService {
     }
 
     public SessionModel createVotingSession(SessionModel sessionModel, Long agendaId) {
-        var agendaModel = agendaService.findAgenda(agendaId);
+        var agendaModel = agendaService.getAgenda(agendaId);
         var sessionEntity = buildSessionEntity(sessionModel, agendaModel);
         return mapFrom(save(sessionEntity));
     }
