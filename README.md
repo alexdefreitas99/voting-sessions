@@ -29,6 +29,7 @@ The project was based on the hexagonal architecture, which consists of dividing 
 # Documentation
 ## Swagger
 http://localhost:8081/voting-sessions/swagger-ui.html
+
 https://voting-sessions-available.herokuapp.com/voting-sessions/swagger-ui.html
 
 # How to run this project locally
