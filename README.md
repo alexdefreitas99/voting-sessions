@@ -22,7 +22,7 @@ O projeto é baseado na arquitetura hexagonal, que consiste em dividir uma aplic
 - **Job:** Agendador de job que roda a cada 30 minutos para verifica todas sessoes que podem ser fechadas, computa os votos e emite um vento para o envio da mensagem para fila.
 - **Queu:** Configurações do sistema de mensageria, consumidores e produtores.
 
-Obs: O versionamento de api é feito com packages (v1, v2..) dentro do módulo contract
+**Obs**: O versionamento de api é feito com packages (v1, v2..) dentro do módulo contract
 
 # Documentação
 ## Swagger
