@@ -124,3 +124,6 @@ Obs: The result of each session will only be available after closing
 ```bash
 $ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic agenda.queuing --from-beginning
 ```
+
+# Documentation in portuguese:
+https://github.com/alexdefreitas99/voting-sessions/blob/master/README.md
