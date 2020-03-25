@@ -120,6 +120,7 @@ Response:
 
 ## To see the total votes of the session agendas.
 Obs: The result of each session will only be available after closing
+
 **This funcionality is only available if you run the application locally**
 ```bash
 $ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic agenda.queuing --from-beginning
