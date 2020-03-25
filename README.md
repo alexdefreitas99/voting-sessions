@@ -117,7 +117,8 @@ Response:
 
 ## Para ver o total de votes de pautas em sessões especificas.
 Obs: The result of each session will only be available after closing
-**Esta funcionalidade esta apenas para quem rodar a aplicação localmente**
+
+**Esta funcionalidade esta disponíbel apenas para quem rodar a aplicação localmente**
 ```bash
 $ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic agenda.queuing --from-beginning
 ```
