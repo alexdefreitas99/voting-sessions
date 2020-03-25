@@ -30,6 +30,8 @@ The project was based on the hexagonal architecture, which consists of dividing 
 ## Swagger
 http://localhost:8081/voting-sessions/swagger-ui.html
 
+https://voting-sessions-available.herokuapp.com/voting-sessions/swagger-ui.html
+
 # How to run this project locally
 
 ```bash
@@ -51,7 +53,7 @@ Create a agenda:
 
 Request:
 
-[POST] http://localhost:8081/voting-sessions/v1/agenda
+[POST] https://voting-sessions-available.herokuapp.com/voting-sessions/v1/agenda
 ```json
 { "subject": "Agenda testing vote" }
 ```
@@ -70,7 +72,7 @@ Create a voting session to this agenda:
 
 Request:
 
-[POST] http://localhost:8081/voting-sessions/v1/session/agenda/4
+[POST] https://voting-sessions-available.herokuapp.com/voting-sessions/v1/session/agenda/4
 ```json
 { "minuteDuration": 3 }
 ```
@@ -89,7 +91,7 @@ Vote:
 
 Request:
 
-[POST] http://localhost:8081/voting-sessions/v1/voting/session/10/agenda/4
+[POST] https://voting-sessions-available.herokuapp.com/voting-sessions/v1/voting/session/10/agenda/4
 ```json
 {
 	"associatedCpf": "54125851085",
@@ -104,7 +106,7 @@ Response:
 ```
 
 ## To see the total votes in a agenda 
-[GET] http://localhost:8081/voting-sessions/v1/agenda/4
+[GET] https://voting-sessions-available.herokuapp.com/voting-sessions/v1/agenda/4
 
 Response: 
 ```json
@@ -120,6 +122,7 @@ Response:
 
 ## To see the total votes of the session agendas.
 Obs: The result of each session will only be available after closing
+**This funcionality is only available if you run the application locally**
 ```bash
 $ kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic agenda.queuing --from-beginning
 ```
